@@ -5,6 +5,7 @@ let winnerComment = document.querySelector("#winnerComment");
 let computerComment = document.querySelector("#desc");
 let overlay = document.querySelector(".overlay");
 let restartBtn = document.querySelector("#restartBtn");
+let finalMessage = document.querySelector("#finalMessage");
 
 let pScore = document.querySelector("#playerScore");
 let cScore = document.querySelector("#computerScore");
@@ -36,7 +37,7 @@ const playRound = (player, computer) => {
 };
 
 //Click Event Listeners
-// rockBtn.addEventListener("onclick", assignValue("rock"));
+// rockBtn.addEventListener("onclick", assignValue("rock")); are there any cases
 // rockBtn.addEventListener("onclick",function assignValue("rock"));
 rockBtn.addEventListener("click", () => assignValue("rock"));
 paperBtn.addEventListener("click", () => assignValue("paper"));
@@ -44,11 +45,7 @@ scissorsBtn.addEventListener("click", () => assignValue("scissors"));
 restartBtn.addEventListener("click", () => restartGame());
 
 const assignValue = (playerSelection) => {
-  if (playerScore === 5) {
-    winnerComment.innerHTML = "<h1>Player Wins The Game</h1>";
-    endGame();
-  } else if (computerScore === 5) {
-    winnerComment.innerHTML = "<h1>Computer Wins The Game</h1>";
+  if (playerScore === 5 || computerScore === 5) {
     endGame();
   }
 
@@ -69,10 +66,13 @@ const updateScores = () => {
 };
 
 const endGame = () => {
-  rockBtn.disabled = true;
-  paperBtn.disabled = true;
-  scissorsBtn.disabled = true;
-  overlay.style.display = "block";
+  if (playerScore === 5) {
+    overlay.style.display = "block";
+    finalMessage.innerHTML = `You won ${playerScore} to ${computerScore}`;
+  } else if (computerScore > playerScore) {
+    overlay.style.display = "block";
+    finalMessage.innerHTML = `You lost ${playerScore} to ${computerScore}`;
+  }
 };
 
 const restartGame = () => {
@@ -80,8 +80,5 @@ const restartGame = () => {
   computerScore = 0;
   pScore.innerHTML = "0";
   cScore.innerHTML = "0";
-  rockBtn.disabled = false;
-  paperBtn.disabled = false;
-  scissorsBtn.disabled = false;
   overlay.style.display = "none";
 };

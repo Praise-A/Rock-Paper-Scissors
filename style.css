@@ -6,6 +6,8 @@
 
 body {
   font-weight: 400;
+  background-color: #5c5b5b;
+  color: white;
 }
 
 main {
@@ -23,6 +25,8 @@ main {
 
 .content-wrapper {
   position: relative;
+  background-color: gray;
+  padding: 5rem;
 }
 
 .btn-container {
@@ -75,8 +79,9 @@ button:hover {
 .overlay {
   position: absolute;
   top: 0;
+  left: 0;
   display: none;
-  background: white;
+  background: #5c5b5b;
   height: 100%;
   width: 100%;
 }
@@ -91,4 +96,13 @@ button:hover {
 
 .restart-container h3 {
   margin-bottom: 0.5rem;
+  font-size: 1.2em;
+}
+
+.final-message {
+  padding: 0.5rem 0;
+}
+
+.restart-container button:hover {
+  background-color: green;
 }
