@@ -80,5 +80,7 @@ const restartGame = () => {
   computerScore = 0;
   pScore.innerHTML = "0";
   cScore.innerHTML = "0";
+  winnerComment.innerHTML = "";
+  computerComment.innerHTML = "";
   overlay.style.display = "none";
 };
